@@ -1,0 +1,1174 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red18\green139\blue2;\red67\green67\blue67;
+\red213\green213\blue213;\red38\green38\blue38;\red10\green82\blue135;\red37\green0\blue135;\red190\green31\blue4;
+\red40\green84\blue83;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c0\c60000\c0;\cssrgb\c33333\c33333\c33333;
+\cssrgb\c86667\c86667\c86667;\cssrgb\c20000\c20000\c20000;\cssrgb\c0\c40000\c60000;\cssrgb\c20000\c0\c60000;\cssrgb\c80000\c20000\c0;
+\cssrgb\c20000\c40000\c40000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl280\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+{{\NeXTGraphic page171image3703504.png \width3882 \height14 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 171 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page172image3676464.png \width6060 \height3600 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git request-pull origin/master myfork\uc0\u8232 \cf4 The following changes since commit 1edee6b1d61823a2de3b09c160d7080b8d1b3a40: \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4       John Smith (1):\
+            added a new function\
+    are available in the git repository at:\
+      git://githost/simplegit.git featureA\
+    Jessica Smith (2):\
+          add limit to log function\
+          change log output to 30 from 25\
+     lib/simplegit.rb |   10 +++++++++-\
+     1 files changed, 9 insertions(+), 1 deletions(-)\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 The output can be sent to the maintainer\'96it tells them where the work was branched from, summarizes the commits, and tells where to pull this work from. 
+\fs24 \
+
+\fs26\fsmilli13333 On a project for which you\'92re not the maintainer, it\'92s generally easier to have a branch like master always track origin/master and to do your work in top- ic branches that you can easily discard if they\'92re rejected. Having work themes isolated into topic branches also makes it easier for you to rebase your work if the tip of the main repository has moved in the meantime and your commits no longer apply cleanly. For example, if you want to submit a second topic of work to the project, don\'92t continue working on the topic branch you just pushed up \'96 start over from the main repository\'92s master branch: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git checkout -b featureB origin/master 
+\b \cf3 # 
+\b0 \cf4 (\cf2 work\cf4 )\cb1 \uc0\u8232 
+\b \cf3 \cb5 $ 
+\b0 \cf2 git commit\cb1 \uc0\u8232 
+\b \cf3 \cb5 $ 
+\b0 \cf2 git push myfork featureB \cb1 \
+
+\b \cf3 \cb5 # 
+\b0 \cf4 (\cf2 email maintainer\cf4 ) 
+\b \cf3 $ 
+\b0 \cf2 git fetch origin \cb1 \
+172 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now, each of your topics is contained within a silo \'96 similar to a patch queue \'96 that you can rewrite, rebase, and modify without the topics interfering or in- terdepending on each other, like so: 
+\fs24 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Contributing to a Project 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-17 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Initial commit history with featureB work. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page173image1794208.png \width6295 \height2281 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Let\'92s say the project maintainer has pulled in a bunch of other patches and tried your first branch, but it no longer cleanly merges. In this case, you can try to rebase that branch on top of origin/master, resolve the conflicts for the maintainer, and then resubmit your changes: 
+\fs24 \
+
+\fs26\fsmilli13333 This rewrites your history to now look like 
+\b \cf6 Figure 5-18
+\b0 \cf2 . 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page173image1681648.png \width6060 \height960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git checkout featureA\uc0\u8232 
+\b \cf3 $ 
+\b0 \cf2 git rebase origin/master\uc0\u8232 
+\b \cf3 $ 
+\b0 \cf2 git push -f myfork featureA \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-18 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Commit history after featureA work. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page173image1787936.png \width6302 \height1896 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Because you rebased the branch, you have to specify the -f to your push command in order to be able to replace the featureA branch on the server with a commit that isn\'92t a descendant of it. An alternative would be to push this new work to a di erent branch on the server (perhaps called featureAv2). 
+\fs24 \
+
+\fs26\fsmilli13333 Let\'92s look at one more possible scenario: the maintainer has looked at work in your second branch and likes the concept but would like you to change an implementation detail. You\'92ll also take this opportunity to move the work to be 
+\fs24 \
+173 \cell \lastrow\row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 based o the project\'92s current master branch. You start a new branch based o the current origin/master branch, squash the featureB changes there, re- solve any conflicts, make the implementation change, and then push that up as a new branch: 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page174image3691648.png \width6060 \height1400 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git checkout -b featureBv2 origin/master 
+\b \cf3 $ 
+\b0 \cf2 git merge --no-commit --squash featureB 
+\b \cf3 # 
+\b0 \cf4 (\cf2 change implementation\cf4 )\uc0\u8232 
+\b \cf3 $ 
+\b0 \cf2 git commit \
+
+\b \cf3 $ 
+\b0 \cf2 git push myfork featureBv2 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 The --squash option takes all the work on the merged branch and squash- es it into one non-merge commit on top of the branch you\'92re on. The --no- commit option tells Git not to automatically record a commit. This allows you to introduce all the changes from another branch and then make more changes before recording the new commit. 
+\fs24 \
+
+\fs26\fsmilli13333 Now you can send the maintainer a message that you\'92ve made the reques- ted changes and they can find those changes in your featureBv2 branch. 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-19 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Commit history after featureBv2 work. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page174image1757696.png \width6302 \height1896 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 174 \
+\pard\intbl\itap1\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Public Project over E-Mail 
+\b0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Many projects have established procedures for accepting patches \'96 you\'92ll need to check the specific rules for each project, because they will di er. Since there are several older, larger projects which accept patches via a developer mailing list, we\'92ll go over an example of that now. 
+\fs24 \
+
+\fs26\fsmilli13333 The workflow is similar to the previous use case \'96 you create topic branches for each patch series you work on. The di erence is how you submit them to the project. Instead of forking the project and pushing to your own writable ver- sion, you generate e-mail versions of each commit series and e-mail them to the developer mailing list: 
+\fs24 \cell \lastrow\row
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Contributing to a Project 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git checkout -b topicA 
+\b \cf3 # 
+\b0 \cf4 (\cf2 work\cf4 )\cb1 \uc0\u8232 
+\b \cf3 \cb5 $ 
+\b0 \cf2 git commit\cb1 \uc0\u8232 
+\b \cf3 \cb5 # 
+\b0 \cf4 (\cf2 work\cf4 ) \cf2 \cb1 \
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git commit \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now you have two commits that you want to send to the mailing list. You use git format-patch to generate the mbox-formatted files that you can e-mail to the list \'96 it turns each commit into an e-mail message with the first line of the commit message as the subject and the rest of the message plus the patch that the commit introduces as the body. The nice thing about this is that applying a patch from an e-mail generated with format-patch preserves all the commit information properly. 
+\fs24 \
+
+\fs26\fsmilli13333 The format-patch command prints out the names of the patch files it cre- ates. The -M switch tells Git to look for renames. The files end up looking like this: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git format-patch -M origin/master \cf4 0001-add-limit-to-log-function.patch 0002-changed-log-output-to-30-from-25.patch \cf2 \cb1 \
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 cat 0001-add-limit-to-log-function.patch\cb1 \uc0\u8232 \cf4 \cb5 From 330090432754092d704da8e76ca5c05c198e71a8 Mon Sep 17 00:00:00 From: Jessica Smith <jessica@example.com>\cb1 \uc0\u8232 \cb5 Date: Sun, 6 Apr 2008 10:17:23 -0700\cb1 \uc0\u8232 \cb5 Subject: [PATCH 1/2] add limit to log function \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5 Limit log functionality to the first 20\
+---\
+ lib/simplegit.rb |    2 +-\
+ 1 files changed, 1 insertions(+), 1 deletions(-)\
+diff --git a/lib/simplegit.rb b/lib/simplegit.rb\
+index 76f47bc..f9815f1 100644\
+--- a/lib/simplegit.rb\
++++ b/lib/simplegit.rb\
+@@ -14,7 +14,7 @@ class SimpleGit\
+   end\
+   def log(treeish = 'master')\
+-    command("git log #\{treeish\}")\
++    command("git log -n 20 #\{treeish\}")\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf4 \cb1 2001 \cf2 \
+175 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf4 \cb5 end \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5    def ls_tree(treeish = 'master')\
+--\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf4 2.1.0 \cf2 \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 You can also edit these patch files to add more information for the e-mail list that you don\'92t want to show up in the commit message. If you add text between the --- line and the beginning of the patch (the diff --git line), then devel- opers can read it; but applying the patch excludes it. 
+\fs24 \
+
+\fs26\fsmilli13333 To e-mail this to a mailing list, you can either paste the file into your e-mail program or send it via a command-line program. Pasting the text o en causes formatting issues, especially with \'93smarter\'94 clients that don\'92t preserve new- lines and other whitespace appropriately. Luckily, Git provides a tool to help you send properly formatted patches via IMAP, which may be easier for you. We\'92ll demonstrate how to send a patch via Gmail, which happens to be the e- mail agent we know best; you can read detailed instructions for a number of mail programs at the end of the aforementioned Documentation/Submit- tingPatches file in the Git source code. 
+\fs24 \
+
+\fs26\fsmilli13333 First, you need to set up the imap section in your ~/.gitconfig file. You can set each value separately with a series of git config commands, or you can add them manually, but in the end your config file should look something like this: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf7 [imap] 
+\b0 \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf8      folder \cf4 = \cf9 "[Gmail]/Drafts"\
+     host = imaps://imap.gmail.com\
+     user = user@gmail.com\
+     pass = p4ssw0rd\
+     port = 993\
+     sslverify = false\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If your IMAP server doesn\'92t use SSL, the last two lines probably aren\'92t neces- sary, and the host value will be imap:// instead of imaps://. When that is set up, you can use git send-email to place the patch series in the Dra s folder of the specified IMAP server: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git send-email *.patch\uc0\u8232 \cf4 0001-added-limit-to-log-function.patch 0002-changed-log-output-to-30-from-25.patch\uc0\u8232 Who should the emails appear to be from? [Jessica Smith <jessica@example.com>] Emails will be sent from: Jessica Smith <jessica@example.com> \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page176image5798784.png \width6060 \height1740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 176 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page177image3687904.png \width5976 \height591 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 Who should the emails be sent to? jessica@example.com\
+Message-ID to be used as In-Reply-To for the first email? y\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Then, Git spits out a bunch of log information looking something like this for each patch you\'92re sending: 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2    (mbox) Adding cc: Jessica Smith <jessica@example.com> from\
+     \\line 'From: Jessica Smith <jessica@example.com>'\
+   OK. Log says:\
+   Sendmail: /usr/sbin/sendmail -i jessica@example.com\
+   From: Jessica Smith <jessica@example.com>\
+   To: jessica@example.com\
+   Subject: [PATCH 1/2] added limit to log function\
+   Date: Sat, 30 May 2009 13:29:15 -0700\
+   Message-Id: <1243715356-61726-1-git-send-email-jessica@example.com>\
+   X-Mailer: git-send-email 1.6.2.rc1.20.g8c5b.dirty\
+   In-Reply-To: <y>\
+   References: <y>\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 Result: OK \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 At this point, you should be able to go to your Dra s folder, change the To field to the mailing list you\'92re sending the patch to, possibly CC the maintainer or person responsible for that section, and send it o . 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Summary 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This section has covered a number of common workflows for dealing with sev- eral very di erent types of Git projects you\'92re likely to encounter, and intro- duced a couple of new tools to help you manage this process. Next, you\'92ll see how to work the other side of the coin: maintaining a Git project. You\'92ll learn how to be a benevolent dictator or integration manager. 
+\fs24 \
+\pard\pardeftab720\sl360\sa240\partightenfactor0
+
+\b\fs32 \cf2 Maintaining a Project 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 In addition to knowing how to e ectively contribute to a project, you\'92ll likely need to know how to maintain one. This can consist of accepting and applying patches generated via format-patch and e-mailed to you, or integrating changes in remote branches for repositories you\'92ve added as remotes to your project. Whether you maintain a canonical repository or want to help by verify- ing or approving patches, you need to know how to accept work in a way that is clearest for other contributors and sustainable by you over the long run. 
+\fs24 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \
+177 \
+
+\fs21\fsmilli10667 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Working in Topic Branches 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 When you\'92re thinking of integrating new work, it\'92s generally a good idea to try it out in a topic branch \'96 a temporary branch specifically made to try out that new work. This way, it\'92s easy to tweak a patch individually and leave it if it\'92s not working until you have time to come back to it. If you create a simple branch name based on the theme of the work you\'92re going to try, such as ruby_cli- ent or something similarly descriptive, you can easily remember it if you have to abandon it for a while and come back later. The maintainer of the Git project tends to namespace these branches as well \'96 such as sc/ruby_client, where sc is short for the person who contributed the work. As you\'92ll remember, you can create the branch based o your master branch like this: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git branch sc/ruby_client master\cb1 \uc0\u8232 
+\fs26\fsmilli13333 \cf2 Or, if you want to also switch to it immediately, you can use the checkout - 
+\fs24 \cf2 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 b option:\uc0\u8232 
+\b\fs24 \cf3 \cb5 $ 
+\b0 \cf2 git checkout -b sc/ruby_client master \cf2 \cb1 \
+
+\fs26\fsmilli13333 Now you\'92re ready to add your contributed work into this topic branch and determine if you want to merge it into your longer-term branches. 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Applying Patches from E-mail 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If you receive a patch over e-mail that you need to integrate into your project, you need to apply the patch in your topic branch to evaluate it. There are two ways to apply an e-mailed patch: with git apply or with git am. 
+\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\b\fs26\fsmilli13333 \cf2 APPLYING A PATCH WITH APPLY 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If you received the patch from someone who generated it with the git diff or a Unix diff command (which is not recommended; see the next section), you can apply it with the git apply command. Assuming you saved the patch at /tmp/patch-ruby-client.patch, you can apply the patch like this: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git apply /tmp/patch-ruby-client.patch \cb1 \
+178 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This modifies the files in your working directory. It\'92s almost identical to run- ning a patch -p1 command to apply the patch, although it\'92s more paranoid and accepts fewer fuzzy matches than patch. It also handles file adds, deletes, and renames if they\'92re described in the git diff format, which patch won\'92t do. Finally, git apply is an \'93apply all or abort all\'94 model where either every- thing is applied or nothing is, whereas patch can partially apply patchfiles, leaving your working directory in a weird state. git apply is overall much more conservative than patch. It won\'92t create a commit for you \'96 a er running it, you must stage and commit the changes introduced manually. 
+\fs24 \
+
+\fs26\fsmilli13333 You can also use git apply to see if a patch applies cleanly before you try ac- tually applying it \'96 you can run git apply --check with the patch: 
+\fs24 \
+
+\fs26\fsmilli13333 If there is no output, then the patch should apply cleanly. This command al- so exits with a non-zero status if the check fails, so you can use it in scripts if you want. 
+\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\b\fs26\fsmilli13333 \cf2 APPLYING A PATCH WITH 
+\b0 AM 
+\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If the contributor is a Git user and was good enough to use the format-patch command to generate their patch, then your job is easier because the patch contains author information and a commit message for you. If you can, encour- age your contributors to use format-patch instead of diff to generate patch- es for you. You should only have to use git apply for legacy patches and things like that. 
+\fs24 \
+
+\fs26\fsmilli13333 To apply a patch generated by format-patch, you use git am. Technically, git am is built to read an mbox file, which is a simple, plain-text format for storing one or more e-mail messages in one text file. It looks something like this: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf4 2001 \cf2 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git apply --check 0001-seeing-if-this-helps-the-gem.patch \cf4 error: patch failed: ticgit.gemspec:1\cb1 \uc0\u8232 \cb5 error: ticgit.gemspec: patch does not apply \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5 From 330090432754092d704da8e76ca5c05c198e71a8 Mon Sep 17 00:00:00\
+From: Jessica Smith <jessica@example.com>\
+Date: Sun, 6 Apr 2008 10:17:23 -0700\
+Subject: [PATCH 1/2] add limit to log function\
+Limit log functionality to the first 20\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 \cb1 179 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This is the beginning of the output of the format-patch command that you saw in the previous section. This is also a valid mbox e-mail format. If someone has e-mailed you the patch properly using git send-email, and you download that into an mbox format, then you can point git am to that mbox file, and it will start applying all the patches it sees. If you run a mail client that can save several e-mails out in mbox format, you can save entire patch series into a file and then use git am to apply them one at a time. 
+\fs24 \
+
+\fs26\fsmilli13333 However, if someone uploaded a patch file generated via format-patch to a ticketing system or something similar, you can save the file locally and then pass that file saved on your disk to git am to apply it: 
+\fs24 \
+
+\fs26\fsmilli13333 You can see that it applied cleanly and automatically created the new com- mit for you. The author information is taken from the e-mail\'92s From and Date headers, and the message of the commit is taken from the Subject and body (before the patch) of the e-mail. For example, if this patch was applied from the mbox example above, the commit generated would look something like this: 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2    $ git log --pretty=fuller -1\
+   commit 6c5e70b984a60b3cecd395edd5b48a7575bf58e0\
+   Author:     Jessica Smith <jessica@example.com>\
+   AuthorDate: Sun Apr 6 10:17:23 2008 -0700\
+   Commit:     Scott Chacon <schacon@gmail.com>\
+   CommitDate: Thu Apr 9 09:19:06 2009 -0700\
+      add limit to log function\
+      Limit log functionality to the first 20\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 The Commit information indicates the person who applied the patch and the time it was applied. The Author information is the individual who originally created the patch and when it was originally created. 
+\fs24 \
+
+\fs26\fsmilli13333 But it\'92s possible that the patch won\'92t apply cleanly. Perhaps your main branch has diverged too far from the branch the patch was built from, or the patch depends on another patch you haven\'92t applied yet. In that case, the git am process will fail and ask you what you want to do: 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page180image1683104.png \width6060 \height740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git am 0001-seeing-if-this-helps-the-gem.patch \cf4 Applying: seeing if this helps the gem\cb1 \uc0\u8232 \cb5 error: patch failed: ticgit.gemspec:1\cb1 \uc0\u8232 \cb5 error: ticgit.gemspec: patch does not apply \cf2 \cb1 \
+180 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git am 0001-limit-log-function.patch \cf4 Applying: add limit to log function \cf2 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4     Patch failed at 0001.\
+    When you have resolved this problem run "git am --resolved".\
+    If you would prefer to skip this patch, instead run "git am --skip".\
+    To restore the original branch and stop patching run "git am --abort".\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This command puts conflict markers in any files it has issues with, much like a conflicted merge or rebase operation. You solve this issue much the same way \'96 edit the file to resolve the conflict, stage the new file, and then run git am -- resolved to continue to the next patch: 
+\fs24 \
+
+\fs26\fsmilli13333 If you want Git to try a bit more intelligently to resolve the conflict, you can pass a -3 option to it, which makes Git attempt a three-way merge. This option isn\'92t on by default because it doesn\'92t work if the commit the patch says it was based on isn\'92t in your repository. If you do have that commit \'96 if the patch was based on a public commit \'96 then the -3 option is generally much smarter about applying a conflicting patch: 
+\fs24 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page181image5784016.png \width6060 \height1040 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf4 (\cf2 fix the file\cf4 )\cb1 \uc0\u8232 
+\b \cf3 \cb5 $ 
+\b0 \cf2 git add ticgit.gemspec\cb1 \uc0\u8232 
+\b \cf3 \cb5 $ 
+\b0 \cf2 git am --resolved\cb1 \uc0\u8232 \cf4 \cb5 Applying: seeing if this helps the gem \cf2 \cb1 \
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git am -3 0001-seeing-if-this-helps-the-gem.patch \cf4 Applying: seeing if this helps the gem\cb1 \uc0\u8232 \cb5 error: patch failed: ticgit.gemspec:1\cb1 \uc0\u8232 \cb5 error: ticgit.gemspec: patch does not apply \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5 Using index info to reconstruct a base tree...\
+Falling back to patching base and 3-way merge...\
+No changes -- Patch already applied.\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \cb1 In this case, this patch had already been applied. Without the -3 option, it looks like a conflict. 
+\fs24 \
+
+\fs26\fsmilli13333 If you\'92re applying a number of patches from an mbox, you can also run the am command in interactive mode, which stops at each patch it finds and asks if you want to apply it: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git am -3 -i mbox\cb1 \uc0\u8232 \cf4 \cb5 Commit Body is: -------------------------- seeing if this helps the gem \cf2 \cb1 \
+181 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page177image3687904.png \width5976 \height591 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 182 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 --------------------------\
+Apply? [y]es/[n]o/[e]dit/[v]iew patch/[a]ccept all\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This is nice if you have a number of patches saved, because you can view the patch first if you don\'92t remember what it is, or not apply the patch if you\'92ve al- ready done so. 
+\fs24 \
+
+\fs26\fsmilli13333 When all the patches for your topic are applied and committed into your branch, you can choose whether and how to integrate them into a longer- running branch. 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Checking Out Remote Branches 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If your contribution came from a Git user who set up their own repository, push- ed a number of changes into it, and then sent you the URL to the repository and the name of the remote branch the changes are in, you can add them as a re- mote and do merges locally. 
+\fs24 \
+
+\fs26\fsmilli13333 For instance, if Jessica sends you an e-mail saying that she has a great new feature in the ruby-client branch of her repository, you can test it by adding the remote and checking out that branch locally: 
+\fs24 \
+
+\fs26\fsmilli13333 If she e-mails you again later with another branch containing another great feature, you can fetch and check out because you already have the remote set- up. 
+\fs24 \
+
+\fs26\fsmilli13333 This is most useful if you\'92re working with a person consistently. If someone only has a single patch to contribute once in a while, then accepting it over e- mail may be less time consuming than requiring everyone to run their own server and having to continually add and remove remotes to get a few patches. You\'92re also unlikely to want to have hundreds of remotes, each for someone who contributes only a patch or two. However, scripts and hosted services may make this easier \'96 it depends largely on how you develop and how your contrib- utors develop. 
+\fs24 \
+
+\fs26\fsmilli13333 The other advantage of this approach is that you get the history of the com- mits as well. Although you may have legitimate merge issues, you know where in your history their work is based; a proper three-way merge is the default rather than having to supply a -3 and hope the patch was generated o a pub- lic commit to which you have access. 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git remote add jessica git://github.com/jessica/myproject.git 
+\b \cf3 $ 
+\b0 \cf2 git fetch jessica\cb1 \uc0\u8232 
+\b \cf3 \cb5 $ 
+\b0 \cf2 git checkout -b rubyclient jessica/ruby-client \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If you aren\'92t working with a person consistently but still want to pull from them in this way, you can provide the URL of the remote repository to the git pull command. This does a one-time pull and doesn\'92t save the URL as a re- mote reference: 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Determining What Is Introduced 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now you have a topic branch that contains contributed work. At this point, you can determine what you\'92d like to do with it. This section revisits a couple of commands so you can see how you can use them to review exactly what you\'92ll be introducing if you merge this into your main branch. 
+\fs24 \
+
+\fs26\fsmilli13333 It\'92s o en helpful to get a review of all the commits that are in this branch but that aren\'92t in your master branch. You can exclude commits in the master branch by adding the --not option before the branch name. This does the same thing as the master..contrib format that we used earlier. For example, if your contributor sends you two patches and you create a branch called con- trib and applied those patches there, you can run this: 
+\fs24 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git pull https://github.com/onetimeguy/project \cf4 From https://github.com/onetimeguy/project \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5  * branch            HEAD       -> FETCH_HEAD\
+Merge made by recursive.\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git log contrib --not master\cb1 \uc0\u8232 \cf4 \cb5 commit 5b6235bd297351589efc4d73316f0a68d484f118 Author: Scott Chacon <schacon@gmail.com>\cb1 \uc0\u8232 \cb5 Date: Fri Oct 24 09:53:59 2008 -0700 \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5     seeing if this helps the gem\
+commit 7482e0d16d04bea79d0dba8988cc78df655f16a0\
+Author: Scott Chacon <schacon@gmail.com>\
+Date:   Mon Oct 22 19:38:36 2008 -0700\
+    updated the gemspec to hopefully work better\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \cb1 To see what changes each commit introduces, remember that you can pass the -p option to git log and it will append the di introduced to each com- mit. 
+\fs24 \
+
+\fs26\fsmilli13333 To see a full di of what would happen if you were to merge this topic branch with another branch, you may have to use a weird trick to get the cor- rect results. You may think to run this: 
+\fs24 \
+183 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git diff master \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This command gives you a di , but it may be misleading. If your master branch has moved forward since you created the topic branch from it, then you\'92ll get seemingly strange results. This happens because Git directly com- pares the snapshots of the last commit of the topic branch you\'92re on and the snapshot of the last commit on the master branch. For example, if you\'92ve add- ed a line in a file on the master branch, a direct comparison of the snapshots will look like the topic branch is going to remove that line. 
+\fs24 \
+
+\fs26\fsmilli13333 If master is a direct ancestor of your topic branch, this isn\'92t a problem; but if the two histories have diverged, the di will look like you\'92re adding all the new stu in your topic branch and removing everything unique to the master branch. 
+\fs24 \
+
+\fs26\fsmilli13333 What you really want to see are the changes added to the topic branch \'96 the work you\'92ll introduce if you merge this branch with master. You do that by hav- ing Git compare the last commit on your topic branch with the first common ancestor it has with the master branch. 
+\fs24 \
+
+\fs26\fsmilli13333 Technically, you can do that by explicitly figuring out the common ancestor and then running your di on it: 
+\fs24 \
+
+\fs26\fsmilli13333 However, that isn\'92t convenient, so Git provides another shorthand for doing the same thing: the triple-dot syntax. In the context of the diff command, you can put three periods a er another branch to do a diff between the last com- mit of the branch you\'92re on and its common ancestor with another branch: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git diff master...contrib \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This command shows you only the work your current topic branch has intro- duced since its common ancestor with master. That is a very useful syntax to remember. 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Integrating Contributed Work 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 When all the work in your topic branch is ready to be integrated into a more mainline branch, the question is how to do it. Furthermore, what overall work- 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git merge-base contrib master \cf4 36c7dba2c95e6bbb78dfa822519ecfec6e1ca649 
+\b \cf3 $ 
+\b0 \cf2 git diff 36c7db \cb1 \
+184 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 flow do you want to use to maintain your project? You have a number of choices, so we\'92ll cover a few of them. 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\b\fs26\fsmilli13333 \cf2 MERGING WORKFLOWS 
+\b0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 One simple workflow merges your work into your master branch. In this sce- nario, you have a master branch that contains basically stable code. When you have work in a topic branch that you\'92ve done or that someone has contributed and you\'92ve verified, you merge it into your master branch, delete the topic branch, and then continue the process. If we have a repository with work in two branches named ruby_client and php_client that looks like 
+\b \cf6 Figure 5-20 
+\b0 \cf2 and merge ruby_client first and then php_client next, then your history will end up looking like 
+\b \cf6 Figure 5-21
+\b0 \cf2 . 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-20 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 History with several topic branches. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page185image1806752.png \width6302 \height2392 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-21 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 After a topic branch merge. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page185image1804064.png \width6302 \height2431 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 185 \cell \lastrow\row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 That is probably the simplest workflow, but it can possibly be problematic if you\'92re dealing with larger or more stable projects where you want to be really careful about what you introduce. 
+\fs24 \
+
+\fs26\fsmilli13333 If you have a more important project, you might want to use a two-phase merge cycle. In this scenario, you have two long-running branches, master and develop, in which you determine that master is updated only when a very sta- ble release is cut and all new code is integrated into the develop branch. You regularly push both of these branches to the public repository. Each time you have a new topic branch to merge in (
+\b \cf6 Figure 5-22
+\b0 \cf2 ), you merge it into develop (
+\b \cf6 Figure 5-23
+\b0 \cf2 ); then, when you tag a release, you fast-forward master to wher- ever the now-stable develop branch is (
+\b \cf6 Figure 5-24
+\b0 \cf2 ). 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-22 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Before a topic branch merge. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page186image1807648.png \width6302 \height2982 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-23 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 After a topic branch merge. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page186image1764416.png \width6302 \height2392 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 186 \cell \lastrow\row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-24 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 After a project release. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page187image1759712.png \width6295 \height2220 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This way, when people clone your project\'92s repository, they can either check out master to build the latest stable version and keep up to date on that easily, or they can check out develop, which is the more cutting-edge stu . You can also continue this concept, having an integrate branch where all the work is merged together. Then, when the codebase on that branch is stable and passes tests, you merge it into a develop branch; and when that has proven itself sta- ble for a while, you fast-forward your master branch. 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\b\fs26\fsmilli13333 \cf2 LARGE-MERGING WORKFLOWS 
+\b0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 The Git project has four long-running branches: master, next, and pu (pro- posed updates) for new work, and maint for maintenance backports. When new work is introduced by contributors, it\'92s collected into topic branches in the maintainer\'92s repository in a manner similar to what we\'92ve described (see 
+\b \cf6 Figure 5-25
+\b0 \cf2 ). At this point, the topics are evaluated to determine whether they\'92re safe and ready for consumption or whether they need more work. If they\'92re safe, they\'92re merged into next, and that branch is pushed up so every- one can try the topics integrated together. 
+\fs24 \
+187 \cell \lastrow\row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-25 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Managing a complex series of parallel contributed topic branches. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page188image1810784.png \width6302 \height3698 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If the topics still need work, they\'92re merged into pu instead. When it\'92s deter- mined that they\'92re totally stable, the topics are re-merged into master and are then rebuilt from the topics that were in next but didn\'92t yet graduate to mas- ter. This means master almost always moves forward, next is rebased occa- sionally, and pu is rebased even more o en: 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-26 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Merging contributed topic branches into long-term integration branches. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page188image1814368.png \width6302 \height3627 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 188 \cell \lastrow\row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 When a topic branch has finally been merged into master, it\'92s removed from the repository. The Git project also has a maint branch that is forked o from the last release to provide backported patches in case a maintenance release is required. Thus, when you clone the Git repository, you have four branches that you can check out to evaluate the project in di erent stages of development, depending on how cutting edge you want to be or how you want to contribute; and the maintainer has a structured workflow to help them vet new contribu- tions. 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\b\fs26\fsmilli13333 \cf2 REBASING AND CHERRY PICKING WORKFLOWS 
+\b0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Other maintainers prefer to rebase or cherry-pick contributed work on top of their master branch, rather than merging it in, to keep a mostly linear history. When you have work in a topic branch and have determined that you want to integrate it, you move to that branch and run the rebase command to rebuild the changes on top of your current master (or develop, and so on) branch. If that works well, you can fast-forward your master branch, and you\'92ll end up with a linear project history. 
+\fs24 \
+
+\fs26\fsmilli13333 The other way to move introduced work from one branch to another is to cherry-pick it. A cherry-pick in Git is like a rebase for a single commit. It takes the patch that was introduced in a commit and tries to reapply it on the branch you\'92re currently on. This is useful if you have a number of commits on a topic branch and you want to integrate only one of them, or if you only have one commit on a topic branch and you\'92d prefer to cherry-pick it rather than run re- base. For example, suppose you have a project that looks like this: 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-27 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 Example history before a cherry-pick. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page189image1817280.png \width6302 \height2982 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If you want to pull commit e43a6 into your master branch, you can run 
+\fs24 \
+189 \cell \lastrow\row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page190image5812304.png \width6060 \height1180 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf\uc0\u8232 \cf4 Finished one cherry-pick.\uc0\u8232 [master]: created a0a41a9: "More friendly message when locking the index fails." \cf2 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf4      3 files changed, 17 insertions(+), 3 deletions(-)\
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 This pulls the same change introduced in e43a6, but you get a new commit SHA-1 value, because the date applied is di erent. Now your history looks like this: 
+\fs24 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrs\brdrw10\brdrcf2 \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf2 FIGURE 5-28 
+\b0 \
+\pard\intbl\itap1\pardeftab720\sl260\sa240\partightenfactor0
+
+\i\fs21\fsmilli10667 \cf2 History after cherry- picking a commit on a topic branch. 
+\i0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page190image3813184.png \width6302 \height2982 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\intbl\itap1\pardeftab720\sl280\partightenfactor0
+\cf2  \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth15640\clftsWidth3 \clbrdrt\brdrs\brdrw10\brdrcf2 \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 190 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now you can remove your topic branch and drop the commits you didn\'92t want to pull in. 
+\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\b\fs26\fsmilli13333 \cf2 RERERE 
+\b0\fs24 \
+\pard\intbl\itap1\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If you\'92re doing lots of merging and rebasing, or you\'92re maintaining a long-lived topic branch, Git has a feature called \'93rerere\'94 that can help. 
+\fs24 \
+
+\fs26\fsmilli13333 Rerere stands for \'93reuse recorded resolution\'94 \'96 it\'92s a way of shortcutting manual conflict resolution. When rerere is enabled, Git will keep a set of pre- and post-images from successful merges, and if it notices that there\'92s a conflict that looks exactly like one you\'92ve already fixed, it\'92ll just use the fix from last time, without bothering you with it. 
+\fs24 \
+
+\fs26\fsmilli13333 This feature comes in two parts: a configuration setting and a command. The configuration setting is rerere.enabled, and it\'92s handy enough to put in your global config: 
+\fs24 \cell \lastrow\row
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git config --global rerere.enabled \cf10 \cb5 true \cf2 \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now, whenever you do a merge that resolves conflicts, the resolution will be recorded in the cache in case you need it in the future. 
+\fs24 \
+
+\fs26\fsmilli13333 If you need to, you can interact with the rerere cache using the git rerere command. When it\'92s invoked alone, Git checks its database of resolutions and tries to find a match with any current merge conflicts and resolve them (al- though this is done automatically if rerere.enabled is set to true). There are also subcommands to see what will be recorded, to erase specific resolution from the cache, and to clear the entire cache. We will cover rerere in more detail in 
+\b \cf6 \'93Rerere\'94
+\b0 \cf2 . 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Tagging Your Releases 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 When you\'92ve decided to cut a release, you\'92ll probably want to drop a tag so you can re-create that release at any point going forward. You can create a new tag as discussed in 
+\b \cf6 Chapter 2
+\b0 \cf2 . If you decide to sign the tag as the maintainer, the tagging may look something like this: 
+\fs24 \
+
+\fs26\fsmilli13333 If you do sign your tags, you may have the problem of distributing the public PGP key used to sign your tags. The maintainer of the Git project has solved this issue by including their public key as a blob in the repository and then adding a tag that points directly to that content. To do this, you can figure out which key you want by running gpg --list-keys: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git tag -s v1.5 -m \cf9 \cb5 'my signed 1.5 tag'\cb1 \uc0\u8232 \cf4 \cb5 You need a passphrase to unlock the secret key for user: "Scott Chacon <schacon@gmail.com>"\cb1 \uc0\u8232 \cb5 1024-bit DSA key, ID F721C45A, created 2009-02-09 \cf2 \cb1 \
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 gpg --list-keys \cf4 /Users/schacon/.gnupg/pubring.gpg --------------------------------- \cf2 \cb1 \
+\cf4 \cb5 pub uid sub \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5 1024D/F721C45A 2009-02-09 [expires: 2010-02-09]\
+               Scott Chacon <schacon@gmail.com>\
+2048g/45D02282 2009-02-09 [expires: 2010-02-09]\
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 \cb1 Then, you can directly import the key into the Git database by exporting it and piping that through git hash-object, which writes a new blob with those contents into Git and gives you back the SHA-1 of the blob: 
+\fs24 \
+191 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page180image1683104.png \width6060 \height740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 192 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 gpg -a --export F721C45A | git \cf10 hash\cf2 -object -w --stdin \cf4 659ef797d181633c87ec71ac3f9ba29fe5775b92 \cf2 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now that you have the contents of your key in Git, you can create a tag that points directly to it by specifying the new SHA-1 value that the hash-object command gave you: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git tag -a maintainer-pgp-pub 659ef797d181633c87ec71ac3f9ba29fe5775b92 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If you run git push --tags, the maintainer-pgp-pub tag will be shared with everyone. If anyone wants to verify a tag, they can directly import your PGP key by pulling the blob directly out of the database and importing it into GPG: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git show maintainer-pgp-pub | gpg --import \cb1 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 They can use that key to verify all your signed tags. Also, if you include in- structions in the tag message, running git show <tag> will let you give the end user more specific instructions about tag verification. 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Generating a Build Number 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Because Git doesn\'92t have monotonically increasing numbers like 
+\i v123 
+\i0 or the equivalent to go with each commit, if you want to have a human-readable name to go with a commit, you can run git describe on that commit. Git gives you the name of the nearest tag with the number of commits on top of that tag and a partial SHA-1 value of the commit you\'92re describing: 
+\fs24 \
+
+\fs26\fsmilli13333 This way, you can export a snapshot or build and name it something under- standable to people. In fact, if you build Git from source code cloned from the Git repository, git --version gives you something that looks like this. If you\'92re describing a commit that you have directly tagged, it gives you the tag name. 
+\fs24 \
+
+\fs26\fsmilli13333 The git describe command favors annotated tags (tags created with the -a or -s flag), so release tags should be created this way if you\'92re using git 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page192image5826032.png \width6060 \height520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2  \cf2 {{\NeXTGraphic page180image1683104.png \width6060 \height740 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git describe master \cf4 v1.6.2-rc1-20-g8c5b85c \cf2 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 describe, to ensure the commit is named properly when described. You can also use this string as the target of a checkout or show command, although it relies on the abbreviated SHA-1 value at the end, so it may not be valid forever. For instance, the Linux kernel recently jumped from 8 to 10 characters to ensure SHA-1 object uniqueness, so older git describe output names were invalida- ted. 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 Preparing a Release 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 Now you want to release a build. One of the things you\'92ll want to do is create an archive of the latest snapshot of your code for those poor souls who don\'92t use Git. The command to do this is git archive: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git archive master --prefix\cf4 =\cf9 'project/' \cf2 | gzip > \cf9 `\cf2 git describe master\cf9 `\cf2 .tar.gz 
+\b \cf3 $ 
+\b0 \cf2 ls *.tar.gz\uc0\u8232 \cf4 v1.6.2-rc1-20-g8c5b85c.tar.gz \cf2 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 If someone opens that tarball, they get the latest snapshot of your project under a project directory. You can also create a zip archive in much the same way, but by passing the --format=zip option to git archive: 
+\fs24 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 $ 
+\b0 \cf2 git archive master --prefix\cf4 =\cf9 'project/' \cf2 --format\cf4 =\cf2 zip > \cf9 `\cf2 git describe master\cf9 `\cf2 .zip 
+\fs26\fsmilli13333 \cf2 You now have a nice tarball and a zip archive of your project release that you 
+\fs24 \cf2 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 can upload to your website or e-mail to people. 
+\fs24 \
+\pard\pardeftab720\sl340\sa240\partightenfactor0
+
+\b\fs29\fsmilli14667 \cf2 The Shortlog 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 It\'92s time to e-mail your mailing list of people who want to know what\'92s happen- ing in your project. A nice way of quickly getting a sort of changelog of what has been added to your project since your last release or e-mail is to use the git shortlog command. It summarizes all the commits in the range you give it; for example, the following gives you a summary of all the commits since your last release, if your last release was named v1.0.1: 
+\fs24 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 Maintaining a Project 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf2 {{\NeXTGraphic page173image1681648.png \width6060 \height960 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sl280\partightenfactor0
+\cf2  \cf2 {{\NeXTGraphic page192image5826032.png \width6060 \height520 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\cf2 \
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+
+\b \cf3 \cb5 $ 
+\b0 \cf2 git shortlog --no-merges master --not v1.0.1 \cf4 Chris Wanstrath (8): \cf2 \cb1 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5       Add support for annotated tags to Grit::Tag\
+      Add packed-refs annotated tag support.\
+      Add Grit::Commit#to_patch\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 \cb1 193 \
+\pard\pardeftab720\sl260\sa240\partightenfactor0
+
+\fs21\fsmilli10667 \cf2 CHAPTER 5: Distributed Git 
+\fs24 \
+\pard\pardeftab720\sl280\partightenfactor0
+\cf4 \cb5 Update version and History.txt\
+      Remove stray `puts`\
+      Make ls_tree ignore nils\
+Tom Preston-Werner (4):\
+      fix dates in history\
+      dynamic version method\
+      Version bump to 1.0.2\
+      Regenerated gemspec for version 1.0.2\
+\pard\pardeftab720\sl280\sa240\partightenfactor0
+\cf2 \cb1 194 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 You get a clean summary of all the commits since v1.0.1, grouped by author, that you can e-mail to your list. 
+\fs24 \
+\pard\pardeftab720\sl360\sa240\partightenfactor0
+
+\b\fs32 \cf2 Summary 
+\b0\fs24 \
+\pard\pardeftab720\sl300\sa240\partightenfactor0
+
+\fs26\fsmilli13333 \cf2 You should feel fairly comfortable contributing to a project in Git as well as maintaining your own project or integrating other users\'92 contributions. Con- gratulations on being an e ective Git developer! In the next chapter, you\'92ll learn about how to use the largest and most popular Git hosting service, GitHub. 
+\fs24 \
+}
